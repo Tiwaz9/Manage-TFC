@@ -9,8 +9,9 @@ resource "tfe_workspace" "workspaces" {
   name          = each.value
   organization  = var.organization
   project_id    = var.project_id
+  
    lifecycle {
-    create_before_destroy = false
+    prevent_destroy = false
     ignore_changes = all
   }
 

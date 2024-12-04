@@ -27,3 +27,4 @@ resource "tfe_variable_set_workspace" "attach_variable_set" {
   variable_set_id = tfe_variable_set.shared.id
   workspace_id    = module.workspaces.workspace_ids[count.index]
 }
+

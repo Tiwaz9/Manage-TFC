@@ -1,11 +1,12 @@
 terraform {
-  
+
   required_providers {
     tfe = {
       source  = "hashicorp/tfe"
-      version = "0.60.1"
+      version = "~>0.50.0"
     }
   }
+
 }
 
 provider "tfe" {
@@ -23,7 +24,7 @@ module "my_assesment_project" {
 module "workspaces" {
   source          = "./modules/workspace"
   organization    = var.organization
-  workspace_names = ["production", "development", "test"]
+  workspace_names = ["prod", "dev", "test"]
   project_id      = var.project_id
   vcs_repo = {
     identifier     = var.vcs_repo_identifier
