@@ -3,4 +3,4 @@ project_name        = "my_assesment_project"
 vcs_repo_identifier = "https://github.com/Tiwaz9/Manage-TFC"
 project_id          = "prj-AmHNM18ZYbhY8ByF"
 existing_project_id = "prj-AmHNM18ZYbhY8ByF"
-
+variable_set_id     = "varset-ftFohC54QtdDZ4mF"

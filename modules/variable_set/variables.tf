@@ -17,3 +17,8 @@ variable "project_name" {
   description = "The name of the project to associate with the variable set"
   type        = string
 }
+variable "variable_set_id" {
+  description = "The ID of the existing variable set in Terraform Cloud"
+  type        = string
+  default     = "varset-ftFohC54QtdDZ4mF"  
+}

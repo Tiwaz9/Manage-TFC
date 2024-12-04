@@ -1,4 +1,5 @@
 terraform {
+  
   required_providers {
     tfe = {
       source  = "hashicorp/tfe"
@@ -22,11 +23,16 @@ module "my_assesment_project" {
 module "workspaces" {
   source          = "./modules/workspace"
   organization    = var.organization
-  project_id      = module.my_assesment_project.project_id
   workspace_names = ["production", "development", "test"]
+  project_id      = var.project_id
   vcs_repo = {
     identifier     = var.vcs_repo_identifier
     branch         = "main"
     oauth_token_id = var.vcs_oauth_token_id
   }
+
+  # Pass the variable set ID and workspace IDs
+  variable_set_id = var.variable_set_id
+  workspace_ids   = [] # Workspace IDs will be populated later
 }
+

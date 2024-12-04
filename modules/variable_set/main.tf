@@ -22,3 +22,8 @@ resource "tfe_project" "main_project" {
   name         = var.project_name
   organization = var.organization
 }
+resource "tfe_variable_set_workspace" "attach_variable_set" {
+  count           = length(module.workspaces.workspace_ids)
+  variable_set_id = tfe_variable_set.shared.id
+  workspace_id    = module.workspaces.workspace_ids[count.index]
+}

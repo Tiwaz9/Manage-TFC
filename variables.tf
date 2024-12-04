@@ -35,3 +35,8 @@ variable "existing_project_id" {
   type        = string
   default     = ""
 }
+
+variable "variable_set_id" {
+  description = "The ID of the existing variable set in Terraform Cloud"
+  type        = string
+}

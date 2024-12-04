@@ -17,3 +17,9 @@ variable "vcs_repo" {
   description = "VCS repository configuration"
   type        = map(string)
 }
+variable "variable_set_id" {
+  description = "The ID of the existing variable set to associate with workspaces"
+  type        = string
+}
+
+
