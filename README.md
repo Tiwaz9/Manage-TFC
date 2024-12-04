@@ -1,4 +1,3 @@
-#Manage-TFC
 Terraform Project: Managing TFE Workspaces
 
 This project uses Terraform to manage workspaces in Terraform Cloud or Terraform Enterprise. It automates the creation, configuration, and management of workspaces.
