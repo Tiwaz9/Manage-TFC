@@ -17,3 +17,8 @@ resource "tfe_variable" "environment_variable" {
   category       = "env"  # Specify the category as "env" for environment variables
   variable_set_id = tfe_variable_set.variable_set.id
 }
+
+resource "tfe_project" "main_project" {
+  name         = var.project_name
+  organization = var.organization
+}

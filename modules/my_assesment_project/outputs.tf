@@ -1,3 +1,3 @@
 output "project_id" {
-  value = tfe_project.main_project.id
+  value = var.existing_project_id != "" ? var.existing_project_id : tfe_project.main_project[0].id
 }

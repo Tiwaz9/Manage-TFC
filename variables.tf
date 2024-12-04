@@ -24,3 +24,14 @@ variable "vcs_oauth_token_id" {
   type        = string
   sensitive   = true
 }
+
+variable "project_id" {
+  description = "The ID of the existing project in Terraform Cloud"
+  type        = string
+}
+
+variable "existing_project_id" {
+  description = "The ID of an existing project, if available"
+  type        = string
+  default     = ""
+}
