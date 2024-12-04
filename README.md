@@ -1,4 +1,3 @@
-#Manage-TFC
 Terraform Project: Managing TFE Workspaces
 
 This project uses Terraform to manage workspaces in Terraform Cloud or Terraform Enterprise. It automates the creation, configuration, and management of workspaces.
@@ -56,24 +55,22 @@ Apply the Configuration:
 
  terraform apply
 
-Usage
+Usage:
 Add/Modify Workspaces
 
-    Edit the modules/workspace/main.tf file to add new workspaces or modify existing ones.
+Edit the modules/workspace/main.tf file to add new workspaces or modify existing ones.
+  Apply the changes:
 
-    Apply the changes:
-
+  
     terraform apply
 
 Destroy Resources
-
-    To delete all managed resources:
+ To delete all managed resources:
 
     terraform destroy
 
 Modules
 
 This project uses the following modules:
-
-    workspace: Manages individual TFE workspaces.
+   workspace: Manages individual TFE workspaces.
     my_assesment_project: Configures projects and associations with workspaces.
