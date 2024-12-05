@@ -1,63 +1,89 @@
-Terraform Workspace Automation with TFE Provider
+Terraform Project for Assessment Organization
 
-This README provides a step-by-step guide for initializing and automating workspaces with Terraform Cloud/Enterprise using the TFE provider.
-Pre-requisites
+This repository manages the infrastructure for the Assesment-Org-12-03 organization using Terraform Cloud for remote execution and variable management.
+Table of Contents
+========================================
+    Project Overview
+    Requirements
+    Setup and Configuration
+    Execution
+    Variables
+    Outputs
+    Contributing
+    License
+========================================
+Project Overview
 
- Terraform installed locally.
-    Access to Terraform Cloud or Enterprise.
-    TFE Token and OAuth Token for authentication.
+This project provisions infrastructure using Terraform and integrates with Terraform Cloud for remote state management and execution. The configuration supports multiple environments (dev, test, prod), and uses variable sets in Terraform Cloud to streamline variable management.
+Requirements
 
-=================================================================================================================================================
-1. Environment Setup
-Set Environment Variables (Preferred)
+    Terraform v1.10.0 or later
+    Terraform Cloud account
+    GitHub repository integration with Terraform Cloud
+    Access to necessary variable values (e.g., organization, VCS repository identifier)
+========================================
+Setup and Configuration
+1. Clone the Repository
 
-export TFE_TOKEN=<your-tfe-token>
-export TFE_OAUTH_TOKEN_ID=<your-oauth-token-id>
+git clone <repository-url>
+cd <repository-name>
+========================================
+2. Initialize Terraform
 
-Optional: Use .terraformrc for Persistent Tokens
-
-Create ~/.terraformrc (Linux/Mac) or %APPDATA%\terraform.rc (Windows):
-
-credentials "app.terraform.io" {
-  token = "<your-tfe-token>"
-}
-
-oauth_token "app.terraform.io" {
-  id = "<your-oauth-token-id>"
-}
-=================================================================================================================================================
-2. Terraform Initialization
-Clone Your Repository
-
-git clone <https://github.com/Tiwaz9/Manage-TFC.git>
-cd <your-repo-folder>
-
-Run Terraform Initialization
+Ensure the backend and modules are initialized:
 
 terraform init
-=================================================================================================================================================
-3. Apply the Configuration
-Standard Apply
+========================================
+3. Variable Management
 
-terraform apply 
+All required variables are managed in Terraform Cloud. For local testing, you can override them using environment variables or command-line arguments.
 
-Passing Variables Manually
+========================================
+4. Directory Structure
 
-terraform apply -var="tfe_token=<your-tfe-token>" -var="oauth_token_id=<your-oauth-token-id>"
+    main.tf - Core configuration file.
+    variables.tf - Input variables declaration.
+    outputs.tf - Output definitions.
+    modules/ - Custom Terraform modules.
+    README.md - Project documentation.
+========================================
+Execution
+1. Plan
 
-=================================================================================================================================================
+To generate and review the execution plan:
 
-4. Cleanup
+terraform plan
 
-To destroy created resources:
+2. Apply
 
-terraform destroy -auto-approve
-=================================================================================================================================================
+To apply the changes to the infrastructure:
 
-5. Best Practices
+terraform apply
 
-    Use environment variables for sensitive tokens.
-    Validate .tfstate and ensure no conflicting configurations.
-    Use remote execution mode unless explicitly requiring agents.
+3. Destroy
 
-Happy Automating! 
+To destroy the infrastructure:
+
+terraform destroy
+========================================
+Variables
+
+The following variables are used in this project:
+Variable Name	Description	Type	Default Value
+organization	Name of the Terraform Cloud org	string	Assesment-Org-12-03
+vcs_repo_identifier	Identifier for the VCS repository	string	default-vcs-repo-identifier
+project_name	Name of the Terraform project	string	default-project-name
+variable_set_id	Variable set ID in Terraform Cloud	string	default-variable-set-id
+
+Sensitive values like tokens are managed directly in Terraform Cloud with the Sensitive flag enabled.
+========================================
+Outputs
+Output Name	Description
+project_id	The ID of the created Terraform Cloud project
+
+========================================
+Contributing
+Guidelines
+
+    Fork the repository and create feature branches.
+    Ensure your code is formatted (terraform fmt) and linted before submitting a PR.
