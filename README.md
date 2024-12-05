@@ -1,76 +1,70 @@
-Terraform Project: Managing TFE Workspaces
+Terraform Workspace Automation with TFE Provider
 
-This project uses Terraform to manage workspaces in Terraform Cloud or Terraform Enterprise. It automates the creation, configuration, and management of workspaces.
-Table of Contents
+This README provides a step-by-step guide for initializing and automating workspaces with Terraform Cloud/Enterprise using the TFE provider.
+Pre-requisites
 
-    Getting Started
-    Prerequisites
-    Setup
-    Usage
-    Modules
+    Terraform installed locally.
+    Access to Terraform Cloud or Enterprise.
+    TFE Token and OAuth Token for authentication.
 
-Getting Started
+1. Environment Setup
+Set Environment Variables (Preferred)
 
-Clone this repository and follow the instructions to set up and manage TFE workspaces for your organization.
-Prerequisites
+export TFE_TOKEN=<your-tfe-token>
+export TFE_OAUTH_TOKEN_ID=<your-oauth-token-id>
 
-    Terraform CLI (v1.10.0 or later recommended)
+Optional: Use .terraformrc for Persistent Tokens
 
-    A Terraform Cloud/Enterprise Account
+Create ~/.terraformrc (Linux/Mac) or %APPDATA%\terraform.rc (Windows):
 
-    API Token for TFE configured in the environment:
+credentials "app.terraform.io" {
+  token = "<your-tfe-token>"
+}
 
-    export TFE_TOKEN=<your-tfe-token>
+oauth_token "app.terraform.io" {
+  id = "<your-oauth-token-id>"
+}
 
-    The following tools installed locally:
-        Git
-        Terraform CLI
+2. Terraform Initialization
+Clone Your Repository
 
-Setup
+git clone <https://github.com/Tiwaz9/Manage-TFC.git>
+cd <your-repo-folder>
 
-    Clone the Repository:
-
-git clone <https://github.com/Tiwaz9/Manage-TFC.git
-cd <repository-folder>
-
-Initialize the Terraform Project:
+Run Terraform Initialization
 
 terraform init
 
-Set up Variables:
+3. Apply the Configuration
+Standard Apply
 
-Update the terraform.tfvars file with the required variables:
+terraform apply 
 
-organization      = "your-tfe-org"
-vcs_oauth_token_id = "your-oauth-token-id"
-vcs_repo_identifier = "github.com/your-repo-name"
+Passing Variables Manually
 
-Or use environment variables to set sensitive data:
+terraform apply -var="tfe_token=<your-tfe-token>" -var="oauth_token_id=<your-oauth-token-id>"
 
-Plan the Changes:
 
-terraform plan
+4. Debugging
+Enable Debug Logs
 
-Apply the Configuration:
+TF_LOG=DEBUG terraform apply
 
- terraform apply
+Common Issues
 
-Usage:
-Add/Modify Workspaces
+    Authentication Errors: Ensure valid TFE_TOKEN and TFE_OAUTH_TOKEN_ID.
+    Agent Errors: Remove agent_pool_id if not using agents.
 
-Edit the modules/workspace/main.tf file to add new workspaces or modify existing ones.
-  Apply the changes:
+5. Cleanup
 
-  
-    terraform apply
+To destroy created resources:
 
-Destroy Resources
- To delete all managed resources:
+terraform destroy -auto-approve
 
-    terraform destroy
+6. Best Practices
 
-Modules
+    Use environment variables for sensitive tokens.
+    Validate .tfstate and ensure no conflicting configurations.
+    Use remote execution mode unless explicitly requiring agents.
 
-This project uses the following modules:
-   workspace: Manages individual TFE workspaces.
-    my_assesment_project: Configures projects and associations with workspaces.
+Happy Automating! 
