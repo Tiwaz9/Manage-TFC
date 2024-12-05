@@ -3,10 +3,11 @@ Terraform Workspace Automation with TFE Provider
 This README provides a step-by-step guide for initializing and automating workspaces with Terraform Cloud/Enterprise using the TFE provider.
 Pre-requisites
 
-    Terraform installed locally.
+ Terraform installed locally.
     Access to Terraform Cloud or Enterprise.
     TFE Token and OAuth Token for authentication.
 
+=================================================================================================================================================
 1. Environment Setup
 Set Environment Variables (Preferred)
 
@@ -24,7 +25,7 @@ credentials "app.terraform.io" {
 oauth_token "app.terraform.io" {
   id = "<your-oauth-token-id>"
 }
-
+=================================================================================================================================================
 2. Terraform Initialization
 Clone Your Repository
 
@@ -34,7 +35,7 @@ cd <your-repo-folder>
 Run Terraform Initialization
 
 terraform init
-
+=================================================================================================================================================
 3. Apply the Configuration
 Standard Apply
 
@@ -44,24 +45,16 @@ Passing Variables Manually
 
 terraform apply -var="tfe_token=<your-tfe-token>" -var="oauth_token_id=<your-oauth-token-id>"
 
+=================================================================================================================================================
 
-4. Debugging
-Enable Debug Logs
-
-TF_LOG=DEBUG terraform apply
-
-Common Issues
-
-    Authentication Errors: Ensure valid TFE_TOKEN and TFE_OAUTH_TOKEN_ID.
-    Agent Errors: Remove agent_pool_id if not using agents.
-
-5. Cleanup
+4. Cleanup
 
 To destroy created resources:
 
 terraform destroy -auto-approve
+=================================================================================================================================================
 
-6. Best Practices
+5. Best Practices
 
     Use environment variables for sensitive tokens.
     Validate .tfstate and ensure no conflicting configurations.
