@@ -1,6 +1,7 @@
 Terraform Project for Assessment Organization
 
 This repository manages the infrastructure for the Assesment-Org-12-03 organization using Terraform Cloud for remote execution and variable management.
+
 Table of Contents
 ========================================
     Project Overview
@@ -12,6 +13,7 @@ Table of Contents
     Contributing
     License
 ========================================
+
 Project Overview
 
 This project provisions infrastructure using Terraform and integrates with Terraform Cloud for remote state management and execution. The configuration supports multiple environments (dev, test, prod), and uses variable sets in Terraform Cloud to streamline variable management.
@@ -21,24 +23,29 @@ Requirements
     Terraform Cloud account
     GitHub repository integration with Terraform Cloud
     Access to necessary variable values (e.g., organization, VCS repository identifier)
+
 ========================================
+
 Setup and Configuration
 1. Clone the Repository
 
 git clone <repository-url>
 cd <repository-name>
 ========================================
+
 2. Initialize Terraform
 
 Ensure the backend and modules are initialized:
 
 terraform init
 ========================================
+
 3. Variable Management
 
 All required variables are managed in Terraform Cloud. For local testing, you can override them using environment variables or command-line arguments.
 
 ========================================
+
 4. Directory Structure
 
     main.tf - Core configuration file.
@@ -46,7 +53,9 @@ All required variables are managed in Terraform Cloud. For local testing, you ca
     outputs.tf - Output definitions.
     modules/ - Custom Terraform modules.
     README.md - Project documentation.
+
 ========================================
+
 Execution
 1. Plan
 
@@ -65,7 +74,9 @@ terraform apply
 To destroy the infrastructure:
 
 terraform destroy
+
 ========================================
+
 Variables
 
 The following variables are used in this project:
@@ -76,12 +87,15 @@ project_name	Name of the Terraform project	string	default-project-name
 variable_set_id	Variable set ID in Terraform Cloud	string	default-variable-set-id
 
 Sensitive values like tokens are managed directly in Terraform Cloud with the Sensitive flag enabled.
+
 ========================================
+
 Outputs
 Output Name	Description
 project_id	The ID of the created Terraform Cloud project
 
 ========================================
+
 Contributing
 Guidelines
 
