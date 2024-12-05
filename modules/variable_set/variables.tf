@@ -1,6 +1,7 @@
 variable "organization" {
   description = "The name of the Terraform Cloud organization"
   type        = string
+  default = "Assesment-Org-12-03"
 }
 
 variable "variable_set_name" {
@@ -16,9 +17,16 @@ variable "workspaces" {
 variable "project_name" {
   description = "The name of the project to associate with the variable set"
   type        = string
+  default = "my_assesment_project"
 }
 variable "variable_set_id" {
   description = "The ID of the existing variable set in Terraform Cloud"
   type        = string
   default     = "varset-ftFohC54QtdDZ4mF"  
+}
+
+variable "TF_VAR_vcs_repo_identifier" {
+  description = "Repository identifier for VCS integration"
+  type        = string
+  default = "https://github.com/Tiwaz9/Manage-TFC"
 }

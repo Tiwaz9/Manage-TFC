@@ -1,5 +1,11 @@
 terraform {
+  cloud {
+    organization = "Assesment-Org-12-03"
 
+    workspaces {
+      name = "Manage-TFC"
+    }
+  }
   required_providers {
     tfe = {
       source  = "hashicorp/tfe"
